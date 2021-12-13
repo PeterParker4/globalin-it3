@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+
+function insertQuestion() {
+	
+	// 내용을 입력받는 대화상자
+	var q = prompt("사칙연산의 수식을 입력하세요.(ex:10+5)","");
+	
+	// 입력받은 문자열을 수식으로 변환함(내장함수 사용)
+	var answer = eval(q);
+	
+	// 사용자가 입력한 질문과 계산결과를 하나의 문자열로 연결함
+	var result = q + "=" + answer;
+	
+	// 출력
+	document.getElementById("question").innerHTML = result;
+}
+
+</script>
+</head>
+<body onload="insertQuestion()">
+ <h1 id="question"></h1>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+
+#thumb {
+padding: 0;
+margin: 0;
+list-style: none;
+float: left;
+}
+
+#thumb li {
+padding: 5px 10px;
+}
+
+#thumb img {
+width: 80px;
+height: 80px;
+}
+
+#view {
+padding: 5px 0;
+width: 320px;
+height: 320px;
+float: left;
+}
+
+#view img {
+width: 100%;
+height: 100%;
+}
+
+</style>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+
+$(function () {
+	$(".item:eq(0)").click(function () {
+		// 링크의 주소에 지정된 href 속성값을 얻어옴
+		var image = $(this).attr("href");
+		// 이미지 영역을 2초간 숨기고
+		$("#view").hide(2000,function() {
+			// 이미지가 사라진 다음에는 이미지의 경로를 클릭한 링크의 href 속성값으로 대치됨
+			$("#view img").attr("src", image);
+			// 다시 이미지를 보여줌
+			$(this).show(2000);
+		});
+		return false;
+	});
+
+	// fade
+	$(".item:eq(1)").click(function () {
+		// 링크의 주소에 지정된 href 속성값을 얻어옴
+		var image = $(this).attr("href");
+		// 이미지 영역을 2초간 숨기고
+		$("#view").fadeOut(3000,function() {
+			// 이미지가 사라진 다음에는 이미지의 경로를 클릭한 링크의 href 속성값으로 대치됨
+			$("#view img").attr("src", image);
+			// 다시 이미지를 보여줌
+			$(this).fadeIn(3000);
+		});
+		return false;
+	});
+
+	//slide	
+	$(".item:eq(2)").click(function () {
+		// 링크의 주소에 지정된 href 속성값을 얻어옴
+		var image = $(this).attr("href");
+		// 이미지 영역을 2초간 숨기고
+		$("#view").slideUp(3000,function() {
+			// 이미지가 사라진 다음에는 이미지의 경로를 클릭한 링크의 href 속성값으로 대치됨
+			$("#view img").attr("src", image);
+			// 다시 이미지를 보여줌
+			$(this).slideDown(3000);
+		});
+		return false;
+	});
+});
+
+</script>
+</head>
+<body>
+<ul id="thumb">
+<!-- 썸 네일 이미지 -->
+ <li>
+   <a href="../img/1.png" class="item"><img src="../img/1.png"></a>
+ </li>
+
+ <li>
+   <a href="../img/2.png" class="item"><img src="../img/2.png"></a>
+ </li>
+
+ <li>
+   <a href="../img/3.png" class="item"><img src="../img/3.png"></a>
+ </li>
+
+</ul>
+
+<!-- 큰 이미지 -->
+<div id="view">
+  <img src="../img/1.png">
+</div>
+
+</body>
+</html>

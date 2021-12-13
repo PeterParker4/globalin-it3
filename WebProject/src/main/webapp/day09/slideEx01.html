@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../css/navigation.css">
+
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery.slides.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+	$('#slides').slidesjs({
+		"width" : 800,
+		"height" : 300,
+		
+		effect : {
+			slide : {
+				speed : 2000
+			},
+		}, callback : {
+			loaded : function (number) {
+				$('h1.title').html(number + "이미지 로드 됨");
+			},
+			start : function (number) {
+				$('h1.title').html(number + "이미지 애니메이션 시작됨");
+			},
+			complete : function (number) {
+				$('h1.title').html(number + "이미지 애니메이션 종료");
+			}
+		}
+		
+/* 		play : {
+			active : true,
+			auto : true,
+			interval : 4000,
+			swap : true,
+			effect : "fade"
+		} */
+/* 		navigation : {
+			active : true,
+			effect : "slide"
+		},
+		pagination : {
+			active : true,
+			effect : "fade"
+		},
+		effect : {
+			slide : {
+				speed : 200
+			},
+			fade : {
+				speed : 300,
+				crossfade : true
+			}
+		} */
+		
+	});
+});
+
+</script>
+
+</head>
+<body>
+<h1 class="title"> Image Slider </h1>
+<div class="example">
+	<div id="slides">
+	  <img src="../img/slide-1.jpg">
+	  <img src="../img/slide-2.jpg">
+	  <img src="../img/slide-3.jpg">
+	  <img src="../img/slide-4.jpg">
+	</div>
+</div>
+</body>
+</html>

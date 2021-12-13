@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+
+var url = "http://www.naver.com/index.html";
+
+document.write("<p> 문자열 : " + url + "</p>");
+
+// 문자열의 글자 수는 ?
+var len = url.length;
+document.write("<p> 문자열의 길이 : " + len + "</p>");
+
+// 파라미터로 설정된 위치의 글자 찾기
+var str2nd = url.charAt(2);
+document.write("<p> 두번째 글자 : " + str2nd + "</p>");
+
+// 파라미터로 전달된 글자가 처음 나타나는 위치
+var position1= url.indexOf("/");
+document.write("<p> '/'가 처음 나타나는 위치 : " + position1 + "</p>");
+
+// indexOf에 파라미터가 두 개인 경우
+var position2 = url.indexOf("/",position1+1);
+document.write("<p> '/'가 두번째 나타나는 위치 : " + position2 + "</p>");
+
+/* 파라미터로 전달된 글자가 마지막으로 나타나는 위치
+ * 단, 이 위치를 문자열의 끝에서부터 세는 것이 아니라, 문자열의 처음부터 센다.
+ */
+
+var position3 = url.lastIndexOf("/");
+document.write("<p> '/'의 마지막 위치 : " + position3 + "</p>");
+
+// 시작위치와 끝위치를 파라미터로 설정하여 부분적으로 잘라내기
+var substring1 = url.substring(0,5);
+document.write("<p> 문자열 자르기 : " + substring1 + "</p>");
+
+// 파라미터가 하나로 설정된 경우 지정한 파라미터 값부터 끝까지 자르기 함
+var substring2 = url.substring(7);
+document.write("<p> 문자열 자르기 : " + substring2 + "</p>");
+
+// 대소문자 변환
+var up = url.toUpperCase();
+document.write("<p> 모든 글자를 대문자로 변환 : " + up + "</p>");
+
+var low = url.toLowerCase();
+document.write("<p> 모든 글자를 소문자로 변환 : " + low + "</p>");
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

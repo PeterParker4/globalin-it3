@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+var sayHello = {
+		"name":"JavaScript",
+		"eng":function() {
+			var console = document.getElementById("console");
+			console.innerHTML = "Hello" + this.name;
+			console.style.color = "#ff0000";
+		},
+		"kor":function() {
+			var console = document.getElementById("console");
+			console.innerHTML = "안녕하세요" + this.name;
+			console.style.color = "#0000ff";
+		}
+};
+
+</script>
+</head>
+<body>
+  <h1>JSON으로 그룹화된 함수 호출</h1>
+  <input type="button" value="sayEng" onclick="sayHello.eng()">
+  <input type="button" value="sayKor" onclick="sayHello.kor()">
+  
+<h1 id="console"></h1></body>
+</html>

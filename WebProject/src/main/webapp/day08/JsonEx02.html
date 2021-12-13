@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+
+function initCompany() {
+	var company = {
+		"name" : "(주) 라이엇게임즈",	
+		"since" : 2021,
+		"department" : ["기획팀","영업팀","디자인팀","개발팀"],
+		"biz" : ["소프트웨어개발","통신판매업","위치정보"]
+	};
+	
+	document.getElementById("name").innerHTML = company.name;
+	document.getElementById("since").innerHTML = company.since;
+	
+	var dept_li = "";
+	for(var i = 0; i < company.department.length; i++) {
+		dept_li += "<li>" +company.department[i]+ "</li>";
+	}
+	document.getElementById("department").innerHTML = dept_li;
+	
+	var biz_li = "";
+	for(var i = 0; i < company.biz.length; i++) {
+		biz_li += "<li>" +company.biz[i]+ "</li>";
+	}
+	document.getElementById("biz").innerHTML = biz_li;
+}
+
+</script>
+</head>
+<body onload="initCompany()">
+ <h1 id="name"></h1>
+  <p>
+    <strong>설립년도: </strong><span id="since"></span>
+  </p>
+  <h2>주요 사업 부서</h2>
+  <ul id="department"></ul>
+  <h2>주요 사업 분야</h2>
+  <ul id="biz"></ul>
+</body>
+</html>

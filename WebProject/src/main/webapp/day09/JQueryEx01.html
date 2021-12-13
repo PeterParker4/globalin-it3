@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+
+function initPage() {
+	var h1 = document.getElementById("hello");
+	
+	h1.style.color = "#0000ff";
+	h1.style.backgroundColor = "#d5d5d5";
+	h1.style.fontSize = "50px";
+	h1.style.padding = "15px";
+	h1.style.margin = "0";
+	h1.innerHTML = "Hello JQuery!!";
+}
+
+function initPage2($) {
+	// initPage2에게는 $라는 개체(혹은 함수)가 파라미터로 전달 되는데,
+	// 이 "$"는 jQuery의 모든 기능을 담고 있는 JQuery의 최상위 객체임
+	var h1 = $("#hello");
+	h1.html("Hello JQuery!!");
+}
+
+/* 
+jQuery(function ($) {
+	// initPage2에게는 $라는 개체(혹은 함수)가 파라미터로 전달 되는데,
+	// 이 "$"는 jQuery의 모든 기능을 담고 있는 JQuery의 최상위 객체임
+	var h1 = $("#hello");
+	h1.html("Hello JQuery3");
+}) */
+
+// 페이지가 열리면서 자동으로 실행됨
+// 크로스 브라우징
+$(function () {
+	$("#hello").html("Hello JQuery4");
+	alert($("#text").html());
+})
+
+// jQuery(initPage);
+// jQuery(initPage2);
+
+</script>
+</head>
+<body>
+<h1 id="hello"></h1>
+<p id="text">안녕하세요 제이쿼리 입니다.</p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../css/event.css">
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+
+// 키 코드 값을 파라미터로 받아서 키보드 이름을 리턴하는 함수
+function getKeyName(keyCode) {
+	// 키 코드와 버튼 이름에 대하여 json 배열로 정의
+	var keyMap = [
+		{code: 8, name:"backspace"},
+		{code: 9, name:"tab"},
+		{code: 13, name:"enter"},
+		{code: 16, name:"shift"},
+		{code: 17, name:"ctrl"},
+		{code: 18, name:"alt"},
+		{code: 19, name:"pausebreak"},
+		{code: 20, name:"capslock"},
+		{code: 21, name:"kor/eng"},
+		{code: 25, name:"hanja"},
+		{code: 27, name:"esc"}
+	];
+	
+	for(var i = 0; i < keyMap.length; i++) {
+		// json의 특정 값과 키 코드가 같다면?
+		if(keyMap[i].code == keyCode) {
+			// 값을 리턴하고 종료함
+			return keyMap[i].name;
+		}
+	}
+}
+
+$(function () {
+	$("#input > input[type='text']").keydown(function (e) {
+		$("#result").html(e.which+"번 키 눌러짐 &gt;&gt; "+getKeyName(e.which));
+		// e 객체에는 어떤 키가 눌려졌는지에 대한 일련번호 값이 which라는 속성으로 내장되어 있음
+	});
+});
+
+</script>
+</head>
+<body>
+<h1>KeyCode 이벤트</h1>
+<div id="input"><input type="text"></div>
+<h2>결과</h2>
+<div id="result"></div>
+</body>
+</html>

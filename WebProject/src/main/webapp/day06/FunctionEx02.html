@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+// 파라미터를 갖는 함수
+
+// 함수 선언
+function f(x) {
+	var y = x+1;
+	document.write("<h1>"+y+"</h1>");
+}
+
+function ff(x, y) {
+	var z = x+y;
+	
+	if(z < 10) {// 결과 값이 10보다 작으면 실행 중단
+		return;
+	}
+	
+	return z;
+	
+	//document.write("<h1>"+z+"</h1>");
+}
+
+// 함수 호출
+f(5);
+f(13);
+f(8);
+
+//ff(10,2);
+//ff(5,2);
+
+// 리턴 값이 있는 경우
+var a = ff(5,2);
+var b = ff(20,2);
+var c = ff(15,2);
+
+document.write("<h1>"+a+"</h1>");
+document.write("<h1>"+b+"</h1>");
+document.write("<h1>"+c+"</h1>");
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

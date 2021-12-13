@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+
+/* 	 첫번째 input 버튼을 누른경우
+	 :eq(n)은 특정 셀렉터가 여러개의 복수 요소를 지정할 경우 사용함
+	 그 중 하나만을 지정하는 jQuery 전용 셀렉터임 */
+
+$(function () {
+	
+	$("#sh > input:eq(0)").click(function () {
+		$("#sh > div").show(200);
+	});
+
+	$("#sh > input:eq(1)").click(function () {
+		$("#sh > div").hide(200);
+	});
+
+	$("#sh > input:eq(2)").click(function () {
+		$("#sh > div").toggle(200);
+	});
+});
+
+</script>
+</head>
+<body>
+ <h1> show / hide </h1>
+ <div id="sh">
+   <input type="button" value="보이기">
+   <input type="button" value="숨기기">
+   <input type="button" value="토글">
+ <div>
+   <img alt="" src="../img/1.jpg" width="300px" height="200px">
+ </div>
+</div>
+</body>
+</html>

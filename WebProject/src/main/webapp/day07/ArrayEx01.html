@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열객체</title>
+<script type="text/javascript">
+
+/*	배열 : 하나의 값 안에 여러개의 변수를 그룹화 하는 단위
+ *        배열이 생성되면 그 안의 값들은 0부터 순서대로 일련번호를 부여받는다.(배열의 인덱스)
+ */
+
+ // 배열의 생성
+ var myarray = new Array("홍길동","조선의 의적","활빈당 보스");
+ // var myarray = ["홍길동","조선의 의적","활빈당 보스"];
+ 
+ // 배열에 저장된 값 읽기
+ document.write("<h1>"+myarray[0]+"</h1>");
+ document.write("<h1>"+myarray[1]+"</h1>");
+ document.write("<h1>"+myarray[2]+"</h1>");
+ 
+ // 배열에 저장된 값 변경
+ myarray[0] = "Hong Gil Dong";
+ myarray[1] = "Chosun's DarkKnight";
+ myarray[2] = "Yong Boss";
+ 
+ document.write("<h1>"+myarray[0]+"</h1>");
+ document.write("<h1>"+myarray[1]+"</h1>");
+ document.write("<h1>"+myarray[2]+"</h1>");
+ 
+</script>
+</head>
+<body>
+
+</body>
+</html>

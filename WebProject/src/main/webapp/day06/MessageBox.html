@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+
+var user_id = prompt("아이디를 입력하세요.","");
+
+// 아이디 값이 입력 되었으면
+if(user_id != "") {
+	alert("안녕하세요. " + user_id+"님");
+
+	var result = confirm("정말 로그아웃 하시겠습니까?")
+	if(result) {
+	alert("로그아웃 되셨습니다. 다음에 다시 방문해주세요...");
+	}else {
+	alert("로그아웃이 취소되었습니다. 즐거운 쇼핑되세요.");
+	}
+}
+
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type = "text/css">
+h3, li {/* 태그 이름으로 셀렉터 지정 */
+  color: brown;
+}
+
+div > div > strong {/* 자식 태그 셀렉터 */
+ background: yellow;
+}
+
+ul strong {/* 자손 셀렉터 */
+ color: dodgerblue;
+}
+
+.warning {/* 클래스 속성지정 */
+ color:red;
+}
+
+body.main {
+ background: aliceblue;
+}
+
+#list {/* 아이디 속성지정 */
+  background: mistyrose;
+}
+
+#list span {
+  color: forestgreen;
+}
+
+h3:first-letter {/* 가상 클래스 적용 */
+  color: red;
+}
+
+li:hover {
+  background: yellowgreen;
+}
+
+</style>
+
+
+</head>
+<body class="main">
+
+<h3>Web Programming</h3>
+<hr>
+
+<div>
+	<div>2학기 <strong>학습내용</strong>입니다. </div>
+	 <ul id="list">
+	  <li><span>HTML5</span></li>
+	  <li><strong>CSS3</strong></li>
+	  <li>JAVAScript</li>
+	 </ul>
+	 <div class="warning">이 모든 과목을 패스하셨습니다.</div>
+</div>
+
+</body>
+</html>

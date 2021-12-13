@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+// 요일의 이름을 배열로 저장
+var days = ["일","월","화","수","목","금","토"];
+
+// date 객체 생성
+var mydate = new Date();
+
+// 년, 월, 일, 시, 분, 초
+var yy = mydate.getFullYear();
+var mm = mydate.getMonth() + 1; // 월은 0부터 시작
+var dd = mydate.getDate();
+
+var i = mydate.getDay(); // 0 = 일요일 ~ 6 = 토요일
+var day = days[i];
+
+var hh = mydate.getHours();
+var mi = mydate.getMinutes();
+var ss = mydate.getSeconds();
+
+var result = yy+"-"+mm+"-"+dd+"-"+day+"요일 "+hh+":"+mi+":"+ss;
+
+document.write("<h1>"+result+"</h1>");
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

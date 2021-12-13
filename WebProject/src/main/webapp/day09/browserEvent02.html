@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../css/scroll.css">
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$(window).scroll(function () {
+		$("#console").html("스크롤이 이동되었습니다.");
+		
+		setTimeout(function () {
+			$("#console").html("");
+		}, 1500);
+	});
+});
+</script>
+</head>
+<body>
+<div class="gradientStyle">
+  <h1>스크롤 이벤트</h1>
+  <div id="console"></div>
+</div>
+
+</body>
+</html>

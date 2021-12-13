@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+
+function printTime() {
+
+// 요일의 이름을 배열로 저장
+var days = ["일","월","화","수","목","금","토"];
+
+// date 객체 생성
+var mydate = new Date();
+
+// 년, 월, 일, 시, 분, 초
+var yy = mydate.getFullYear();
+var mm = mydate.getMonth() + 1; // 월은 0부터 시작
+var dd = mydate.getDate();
+
+var i = mydate.getDay(); // 0 = 일요일 ~ 6 = 토요일
+var day = days[i];
+
+var hh = addZeros(mydate.getHours(),2);
+var mi = addZeros(mydate.getMinutes(),2);
+var ss = addZeros(mydate.getSeconds(),2);
+
+var result = yy+"-"+mm+"-"+dd+"-"+day+"요일 "+hh+":"+mi+":"+ss;
+
+document.getElementById("timer").innerHTML=result;
+}
+
+function startTimer() {
+	setInterval(printTime,1000);
+}
+
+function addZeros(num, digit) { // 자릿수 맞춰주기
+	  var zero = '';
+	  num = num.toString();
+	  if (num.length < digit) {
+	    for (i = 0; i < digit - num.length; i++) {
+	      zero += '0';
+	    }
+	  }
+	  return zero + num;
+}
+
+</script>
+</head>
+<body onload="startTimer()">
+<h1 id="timer"></h1>
+</body>
+</html>

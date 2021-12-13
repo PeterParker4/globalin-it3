@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+<script type="text/javascript">
+
+// 두 수를 더한 값을 리턴
+function sum(x,y) {
+	var z = x+y;
+	return z;
+}
+
+// input type="button"이 클릭되었을 때 호출
+function printResult() {
+	var result = sum(10,50);
+	
+	/* 
+	  document.getElementById("question")
+	  id가 question인 태그의 요소를 의미함
+	*/
+	var mytag = document.getElementById("question");
+	
+	/* 
+	  결과값을 지정하여 넣어줌 innerHTML = result;
+	  ?가 들어있는 태그 안에 새롭게 지정한 result 값이 ?를 지우고 자신이 그자리로 들어감	
+	*/
+	mytag.innerHTML = result;
+}
+
+// 1. id가 question인 요소안에 10+50의 결과를 지정함
+function showResult() {
+	var result = sum(10,50);
+	var red_result = "<font color='red'>" + result + "</font>";
+	document.getElementById("question").innerHTML=red_result;
+}
+
+// 2. id가 question인 요소에 ?를 지정함
+function hideResult() {
+	document.getElementById("question").innerHTML="?";
+}
+
+</script>
+
+</head>
+<body>
+ <h1 onmouseover="showResult()" onmouseout="hideResult()">10 + 50 = <span id="question">?</span></h1>
+ <!-- 버튼을 클릭했을 때 printResult() 함수를 호출함 -->
+<!--  <input type="button" value="결과보기" onclick="printResult()"> -->
+
+</body>
+</html>

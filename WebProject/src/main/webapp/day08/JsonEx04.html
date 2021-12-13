@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+
+// 게시판 데이터 표현
+var bbs = {
+	"title" : "JavaScript JQurey ",
+	"description" : " 글로벌인 자바 & 빅데이터 과정 학생용 자료실입니다.",
+	"total" : 4,
+	"item" : [
+		{"no":"공지","subject":"'자바 & 빅데이터 과정' 학생용 자료실","hit":25,"date":"2021.11.17"},
+		{"no":3,"subject":"JavaScript & JQuery 3일차 강의 자료입니다.","hit":15,"date":"2021.11.16"},
+		{"no":2,"subject":"JavaScript & JQuery 2일차 강의 자료입니다.","hit":18,"date":"2021.11.15"},
+		{"no":1,"subject":"JavaScript & JQuery 1일차 강의 자료입니다.","hit":22,"date":"2021.11.12"}
+	]
+};
+
+// bbs 안의 각 독립된 값들에 대한 출력 HTML 생성
+var html = "<h1>"+bbs.title+"</h1>";
+html += "<p>"+bbs.description+"</p>";
+html += "<p> 총 게시글 수 : "+bbs.total+"개 </p>";
+html += "<ul>";
+
+// 배열로 표현되는 게시물 정보에 대한 출력 HTML 생성
+for(var i = 0; i < bbs.item.length; i++) {
+	var item = bbs.item[i];
+	html += "<li>("+item.no+") "+item.subject+" (조회수 : "+item.hit+"/ 날짜 : "+item.date+")</li>";
+}
+html += "</ul>";
+
+// 브라우저 화면 출력
+document.write(html);
+</script>
+</head>
+<body>
+
+</body>
+</html>

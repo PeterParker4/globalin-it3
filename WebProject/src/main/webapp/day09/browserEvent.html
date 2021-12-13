@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../css/event.css">
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$(window).resize(function () {
+		$("#result").html("<p>" + $(window).width() + " x " + $(window).height()+"</p>");
+	});
+});
+
+</script>
+</head>
+<body>
+  <h1>창 크기 조절</h1>
+   <div id="result"></div>
+</body>
+</html>

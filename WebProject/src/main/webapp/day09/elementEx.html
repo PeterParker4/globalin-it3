@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+div#container {
+	width: auto;
+	border: 5px solid #ff00ff;
+	padding: 10px;
+}
+
+div#container > h1#title {
+	background-color: #d5d5d5;
+	padding: 10px;
+}
+
+div#container div.box {
+	padding: 10px;
+	background-color: #ffff00;
+	font: 20px '궁서';
+}
+
+div#container > ul {
+	list-style: none;
+	padding: 10px;
+	margin: 0;
+	width: auto;
+	border: 5px solid #00ff00;
+}
+
+div#container > ul > li:first-child, li:last-child {
+	border: 3px dotted red;
+	padding: 3px 10px;
+}
+
+pre {
+	font: 14px/130% 'Courier New';
+	background: #eee;
+	margin: 10px auto;
+	padding: 10px 20px;
+	border: 1px solid #555;
+	border-radius: 20px;
+}
+
+</style>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+
+	$(function () {
+		// id 값에 의한 접근 - 가장 일반적인 방법
+		$("#title").html("두번째 제목");
+		
+		// 자식 셀렉터 사용
+		$("div#container > h1#title").html("제목입니다.");
+		
+		// 자손 셀렉터 사용
+		$("div#container div.box").html("안녕하세요.");
+		
+		$("ul > li").html("목록입니다.");
+		
+		$("ul > li:eq(1)").html("jQuery 고유의 방식......");
+		
+		// 복수 요소 지정
+		$("p, pre").html("다중 요소 선택");
+		
+		// name 속성이 source인 항목만 지정
+		$("pre[name='source']").html("Css 선택자");
+		
+		// ul 태그의 첫번째 항목과 마지막 항목 지정
+		$("ul > li:first-child").html("First-Child");
+		$("ul > li:last-child").html("Last-Child");
+		
+	});
+
+</script>
+</head>
+<body>
+<div id="container">
+  <h1 id="title"></h1>
+   <div class="box"></div>
+   <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+   </ul>
+</div>
+<p></p>
+<pre></pre>
+<pre name='source'></pre>
+
+</body>
+</html>

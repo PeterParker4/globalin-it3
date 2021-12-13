@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+.input_group {
+
+height: 42px;
+border-bottom: 1px dotted #ccc;
+font: 1em/40px '궁서체', 'Helvetica';
+}
+
+.input_group > label {
+width: 80px;
+display: inline-block;
+}
+
+</style>
+<script type="text/javascript">
+function doSubmit() {
+
+	// 폼 객체 생성
+	var frm = document.form1;
+	
+	if(!frm.user_name.value) {
+		alert("이름을 입력해 주세요.");
+		frm.user_name.focus();
+		return false;
+	}
+	
+	if(!frm.gender[0].checked && !frm.gender[1].checked) {
+		alert("성별을 선택해 주세요.");
+		frm.gender[0].focus();
+		return false;
+	}
+	
+	if(frm.job.selectedIndex < 1) {
+		alert("직업을 선택해 주세요.");
+		frm.job.focus();
+		return false;
+	}
+	
+	var chk = false;
+	for(var i = 0; i < frm.hobby.length; i++) {
+		if(frm.hobby[i].checked) {
+			chk = true;
+			break;
+		}
+	}
+	
+	if(!chk) {
+		alert("취미를 선택해 주세요.");
+		frm.hobby[0].focus();
+		return false;
+	}
+	
+	if(confirm("입력하신 내용이 맞습니까???")) {
+		frm.submit();
+	}
+}
+
+</script>
+</head>
+<body>
+<form name="form1" onsubmit="doSubmit()">
+ <fieldset>
+  <legend>회원가입</legend>
+  <div class="input_group first">
+    <label>이름</label>
+    <input type="text" name="user_name">
+  </div>
+  
+  <div class="input_group">
+    <label>성별</label>
+    <label><input type="radio" name="gender" value="M">남자</label>
+    <label><input type="radio" name="gender" value="F">여자</label>
+  </div>
+  
+  <div class="input_group">
+    <label>직업</label>
+    <select name="job">
+      <option>----- 선택하세요 -----</option>
+      <option value="dev">프로그래머</option>
+      <option value="pub">퍼블리셔</option>
+    </select>
+  </div>
+ 
+  <div class="input_group">
+    <label>취미</label>
+    <label><input type="checkbox" value="축구" name="hobby">축구</label>
+    <label><input type="checkbox" value="농구" name="hobby">농구</label>
+    <label><input type="checkbox" value="야구" name="hobby">야구</label>
+  </div>
+  
+  <div class="input_group">
+    <label>&nbsp;</label>
+    <input type="submit" name="button" value="전송">
+    <input type="button" name="button2" value="취소">
+  </div>
+ </fieldset>
+</form>
+</body>
+</html>

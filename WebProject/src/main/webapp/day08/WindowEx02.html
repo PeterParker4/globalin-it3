@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Window</title>
+<script type="text/javascript">
+
+function open1() {
+	// 새창 띄우기
+	window.open('WindowEx.html');
+}
+
+function open2() {
+	// 클릭 할때마다 새로 열리는 팝업창
+	window.open('WindowEx.html',"",'width=300,height=500,scrollbars=no,toolbar=no, menubar=no,status=no,location=no');
+}
+
+function open3(url) {
+	// 한번 생성된 팝업창을 지속적으로 재사용하는 팝업창
+	// 팝업의 주소를 파라미터로 전달받음
+	window.open(url,'mywin','width=300,height=500,scrollbars=no,toolbar=no, menubar=no,status=no,location=no');
+}
+
+</script>
+</head>
+<body>
+  <h1> window 객체 </h1>
+  <h3> open method </h3>
+  <div>
+  		<a href="#" onclick="open1(); return false;"> 새창 열기 </a><br>
+  		<a href="#" onclick="open2(); return false;"> 팝업창 열기 1 </a><br>
+  		<a href="#" onclick="open3('http://www.naver.com'); return false;"> 팝업창 열기 2 </a><br>
+  		<a href="#" onclick="open3('http://www.daum.net'); return false;"> 팝업창 열기 3 </a><br>
+  </div>
+</body>
+</html>

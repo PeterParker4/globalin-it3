@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+
+// 화면의 중심 좌표를 가로/세로 형태의 배열로 리턴하는 함수 정의
+function getCenterPixel() {
+	var center = new Array(
+			parseInt(screen.availWidth/2),parseInt(screen.availHeight/2)
+			);
+	return center;
+}
+
+var screenCenter = getCenterPixel();
+
+document.write(
+		"<h1> 모니터 화면의 중심 좌표 : x=" + screenCenter[0] + "px, y="+screenCenter[1]+"px</h1>");
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

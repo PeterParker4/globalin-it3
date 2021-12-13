@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+
+ // 비어있는 객체 생성
+ var p = {};
+
+ // 비어있는 객체안에 변수를 추가한다.
+ p.name="홍길동";
+ p.gender="남자";
+
+ document.write("<h1>"+p.name+"님은 "+p.gender+"입니다.</h1>");
+ 
+ // 일반적인 함수선언
+ function myFunc() {
+	 document.write("<h1>사랑합니다. 여러분 !!!!</h1>");
+ }
+ 
+ // 자바스크립트의 함수와 변수는 동급으로 처리됨
+ // 함수의 이름을 변수에 대입할 수 있음
+ //var val = myFunc();
+ 
+ var v = function() {
+	 document.write("<h1> 사랑합니다. 여러분 !!!!</h1>");
+ }
+ 
+ // 함수가 대입된 변수는 함수처럼 동작 가능함
+myFunc();
+v();
+ 
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+
+// 객체안에 멤버변수와 함수 포함
+
+var people = {};
+people.age = 20;
+people.addr = "서울특별시 동대문구";
+people.email = "jinsu9337@naver.com";
+
+// 객체안에 함수를 포함시킴
+people.Age = function () {
+	// 객체 안에 포함된 함수에서, 멤버변수에 접근하기 위해서는
+	// 반드시 "this."이라는 키워드를 사용함
+	document.write("<h1>"+this.age+"</h1>");
+};
+
+people.Addr = function () {
+	document.write("<h1>"+this.addr+"</h1>");
+};
+
+people.Email = function () {
+	document.write("<h1>"+this.email+"</h1>");
+};
+
+people.Info = function () {
+	document.write("<h1>"+this.age+" "+this.addr+" "+this.email+"</h1>");
+};
+
+/* people.Age();
+people.Addr();
+people.Email(); */
+
+people.Info();
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
