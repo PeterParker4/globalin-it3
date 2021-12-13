@@ -12,7 +12,7 @@
 <form action="/JspProject/Upload" method="post" enctype="multipart/form-data">
 작성자 : <input type="text" name="theAuthor"><br>
 파일 : <input type="file" name="theFile"><br>
-<input type="submit" value="업로드">
+<input type="submit" value="업로드">asdfasdfsdf
 </form>
 
 </body>
