@@ -23,14 +23,14 @@
   	<url-pattern>/LifeCycle</url-pattern>
   </servlet-mapping> -->
   
-<context-param>
+<!-- <context-param>
     <param-name>company</param-name>
     <param-value>Global In</param-value>
   </context-param>
   <context-param>
     <param-name>manager</param-name>
     <param-value>Jung Sub Kim</param-value>
-  </context-param>
+  </context-param> -->
   
 <!-- <servlet>
   	<servlet-name>InitParam</servlet-name>
@@ -148,6 +148,28 @@
     <exception-type>java.lang.NullPointerException</exception-type>
   <location>/error/errorNullPointer.jsp</location>
   </error-page>
+  
+  
+<!--   <servlet>
+    <servlet-name>PieChartServlet</servlet-name>
+    <servlet-class>chart.PieChartServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>PieChartServlet</servlet-name>
+    <url-pattern>/PieChartServlet</url-pattern>
+  </servlet-mapping> -->
+
+  <servlet>
+    <servlet-name>XYPlotServlet</servlet-name>
+    <servlet-class>chart.XYPlotServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>XYPlotServlet</servlet-name>
+    <url-pattern>/XYPlotServlet</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>
 
