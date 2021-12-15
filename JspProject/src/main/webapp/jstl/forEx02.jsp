@@ -44,6 +44,9 @@ request.setAttribute("memberList", memberList);
   </tr>
   </c:forEach>
 
+for(i=1; i < 5; i++) {
+arr[i] = 6;
+
 </table>
 </body>
 </html>
