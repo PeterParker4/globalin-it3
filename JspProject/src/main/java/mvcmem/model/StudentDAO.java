@@ -1,14 +1,27 @@
-package memberone;
+package mvcmem.model;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
 
-import javax.sql.*;
-import javax.naming.*;
-
-import jdbc.tempMemberVO;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 public class StudentDAO {
+
+	private static StudentDAO instance = null;
+	private StudentDAO() { }
+	
+	public static StudentDAO getInstance() {
+		if(instance == null) {
+			synchronized (StudentDAO.class) {
+				instance = new StudentDAO();
+			}
+		}
+		return instance;
+	}
 
 	// DB 연결 함수
 	private Connection getConnection() {
@@ -26,7 +39,6 @@ public class StudentDAO {
 	// 아이디 체크 함수
 	public boolean idCheck(String id) {
 		boolean result = true;
-		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -49,8 +61,7 @@ public class StudentDAO {
 		return result;
 	}
 	
-	// 우편번호를 데이터베이스에서 검색해서 Vector에 담아서 
-	// 리턴해주는 기능을 DAO에 추가한다.
+	// 우편번호를 데이터베이스에서 검색해서 Vector에 담아서 리턴해주는 기능을 DAO에 추가한다.
 	public Vector<ZipcodeVO> zipcodeRead(String dong) {
 		
 		Connection con = null;
@@ -93,7 +104,7 @@ public class StudentDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean flag = false;
+		boolean result = false;
 		
 		try {
 			con = getConnection();
@@ -111,7 +122,7 @@ public class StudentDAO {
 			pstmt.setString(10, vo.getAddress2());
 			
 			int count = pstmt.executeUpdate();
-			if(count > 0) flag = true;
+			if(count > 0) result = true;
 			
 		}catch(Exception e) {
 			System.out.println("Exception "+e);
@@ -120,7 +131,41 @@ public class StudentDAO {
 			if(pstmt != null) try {pstmt.close();}catch(SQLException s2) {}
 			if(con != null) try {con.close();}catch(SQLException s3) {}
 		}
-		return flag;
+		return result;
+	}
+	
+	// 정보수정 버튼을 클릭시 데이터베이스에 update를 수행해야 함
+	// 정보수정을 처리해 줄 메소드 추가
+	public boolean updateMember(StudentVO vo) {
+		
+		boolean result = false;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConnection();
+			String strQuery = "update student set pass=?, phone1=?, phone2=?, phone3=?, email=?, zipcode=?, address1=?, address2=? where id=?";
+			pstmt = con.prepareStatement(strQuery);
+			pstmt.setString(1, vo.getPass());
+			pstmt.setString(2, vo.getPhone1());
+			pstmt.setString(3, vo.getPhone2());
+			pstmt.setString(4, vo.getPhone3());
+			pstmt.setString(5, vo.getEmail());
+			pstmt.setString(6, vo.getZipcode());
+			pstmt.setString(7, vo.getAddress1());
+			pstmt.setString(8, vo.getAddress2());
+			pstmt.setString(9, vo.getId());
+			
+			if(pstmt.executeUpdate() > 0)
+				result = true;
+			
+		}catch(Exception e) {
+			System.out.println("Exception "+e);
+		}finally {
+			if(pstmt != null) try {pstmt.close();}catch(SQLException s1) {}
+			if(con != null) try {con.close();}catch(SQLException s2) {}
+		}
+		return result;
 	}
 	
 	// DB에서 id/password를 비교하여 그 결과를 정수형으로 리턴해주는 메소드를 구현함
@@ -132,7 +177,7 @@ public class StudentDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		int check = -1;
+		int result = -1;
 		
 		try {
 			con = getConnection();
@@ -144,8 +189,8 @@ public class StudentDAO {
 			if(rs.next()) {
 				String dbPass = rs.getString("pass");
 				
-				if(pass.equals(dbPass)) check = 1;
-				else check = 0;
+				if(pass.equals(dbPass)) result = 1;
+				else result = 0;
 			}
 		}catch(Exception e) {
 			System.out.println("Exception "+e);
@@ -154,7 +199,7 @@ public class StudentDAO {
 			if(pstmt != null) try {pstmt.close();}catch(SQLException s2) {}
 			if(con != null) try {con.close();}catch(SQLException s3) {}
 		}
-		return check;
+		return result;
 	}
 	
 	/* 정보수정을 클릭하면 현재 로그인한 회원의 정보를 수정할 수 있도록 미리 화면에 보여주어야 함
@@ -198,37 +243,6 @@ public class StudentDAO {
 			if(con != null) try {con.close();}catch(SQLException s3) {}
 		}
 		return vo;
-	}
-	
-	// 정보수정 버튼을 클릭시 데이터베이스에 update를 수행해야 함
-	// 정보수정을 처리해 줄 메소드 추가
-	public void updateMember(StudentVO vo) {
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		
-		try {
-			con = getConnection();
-			String strQuery = "update student set pass=?, phone1=?, phone2=?, phone3=?, email=?, zipcode=?, address1=?, address2=? where id=?";
-			pstmt = con.prepareStatement(strQuery);
-			pstmt.setString(1, vo.getPass());
-			pstmt.setString(2, vo.getPhone1());
-			pstmt.setString(3, vo.getPhone2());
-			pstmt.setString(4, vo.getPhone3());
-			pstmt.setString(5, vo.getEmail());
-			pstmt.setString(6, vo.getZipcode());
-			pstmt.setString(7, vo.getAddress1());
-			pstmt.setString(8, vo.getAddress2());
-			pstmt.setString(9, vo.getId());
-			
-			pstmt.executeUpdate();
-			
-		}catch(Exception e) {
-			System.out.println("Exception "+e);
-		}finally {
-			if(pstmt != null) try {pstmt.close();}catch(SQLException s1) {}
-			if(con != null) try {con.close();}catch(SQLException s2) {}
-		}
 	}
 	
 	// 탈퇴 버튼을 클릭하면 실제로 데이터베이스에서 회원데이터가 삭제되어야 함
