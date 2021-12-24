@@ -12,9 +12,9 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body bgcolor = "${bodyback_c}>">
+<body bgcolor = "${bodyback_c}">
 <div align = "center"><b>글쓰기</b></div><br><br>
-<form action="/JspProject/board/writeProc.do" name = "writeForm" method = "post"
+<form action="/JspProject/board/writePro.do" name="writeForm" method="post"
 onsubmit="return writeSave()">
 <input type="hidden" name="num" value="${num}">
 <input type="hidden" name="ref" value="${ref}">
@@ -46,11 +46,11 @@ onsubmit="return writeSave()">
 <tr>
    <td width="70" bgcolor="${value_c}" align="center">제목</td>
    <td width="330">
-     <c:if test="${request.getParameter('num') == null}">
+     <c:if test="${num == null}">
        <input type="text" size="50" maxlength="50" name="subject">
      </c:if>
 
-     <c:if test="${request.getParameter('num') != null}">
+     <c:if test="${num != null}">
        <input type="text" size="50" maxlength="50" name="subject" value="[답변]">
      </c:if>
    </td>

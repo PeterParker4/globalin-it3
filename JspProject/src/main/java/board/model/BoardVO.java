@@ -17,6 +17,8 @@ public class BoardVO {
 	private String content;
 	private String ip;
 	
+	public BoardVO() {}
+	
 	public int getNum() {
 		return num;
 	}
