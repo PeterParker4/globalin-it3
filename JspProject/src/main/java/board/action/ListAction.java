@@ -11,6 +11,7 @@ import board.model.BoardVO;
 
 public class ListAction implements CommandAction {
 
+	// 글목록 처리
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
@@ -32,15 +33,39 @@ public class ListAction implements CommandAction {
 		int count = 0;
 		int number = 0;
 		
+		// 검색
+		String find = null;
+		String find_box = null;
+		
+		find = request.getParameter("find");
+		find_box = request.getParameter("find_box");
+		
+		if(find == null) {
+			find = "no";
+		}
+		
+		if(find_box == null) {
+			find_box = "no";
+		}
+		
 		List<BoardVO> articleList = null;
 		
 		// 데이터베이스 연동
 		BoardDAO dbPro = BoardDAO.getInstance();
 		
+		/*
 		count = dbPro.getArticleCount();
 		
 		if(count > 0) {// 현재 페이지에 해당하는 글 목록
 			articleList = dbPro.getArticles(startRow, endRow);
+		}else {
+			articleList = Collections.emptyList();
+		}
+		*/
+		
+		count = dbPro.getArticleCount(find, find_box);
+		if(count > 0) {
+			articleList = dbPro.getArticles(find, find_box, startRow, endRow);
 		}else {
 			articleList = Collections.emptyList();
 		}
@@ -56,6 +81,8 @@ public class ListAction implements CommandAction {
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("number", number);
 		request.setAttribute("articleList", articleList);
+		request.setAttribute("find", find);
+		request.setAttribute("find_box", find_box);
 		
 		return "/board/list.jsp";
 	}

@@ -26,5 +26,4 @@ public class DogRegistService {
 		close(con);
 		return isRegistSuccess;
 	}
-	
 }

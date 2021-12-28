@@ -1,14 +1,14 @@
 package vo;
 
-//포워딩 정보를 저장할 수 있는 클래스
-public class ActionForward {
-
+// 포워딩정보를 저장할수 있는 클래스.
+public class ActionForward 
+{
 	private String path;
 	private boolean redirect;
 	
-	public ActionForward(String path, boolean redirect) {
-		this.path = path;
-		this.redirect = redirect;
+	public ActionForward(String path, boolean redirect) 
+	{
+		this.path = path; this.redirect = redirect;
 	}
 
 	public String getPath() {

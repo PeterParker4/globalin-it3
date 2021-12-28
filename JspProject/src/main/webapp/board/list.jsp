@@ -10,16 +10,35 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+
+function check() {
+	if(document.find_frm.find_box.value == "null") {
+		alert("검색어를 입력하세요.");
+		return false;
+	}
+}
+
+function frm_sub(i) {
+	i_frm.action = "/JspProject/board/list.do?pageNum=" + i;
+	i_frm.submit();
+}
+
+</script>
 </head>
 <body bgcolor = "${bodyback_c }">
 <div align="center"><b>글목록(전체 글:${count })</b>
 <table width="700">
   <tr>
 	<td align="right" bgcolor="${value_c }">
+	<a href="/JspProject/board/list.do">글목록</a></td>
+	
+	<td align="right" bgcolor="${value_c }">
 	<a href="/JspProject/board/writeForm.do">글쓰기</a></td>
   </tr>
 </table>
 <c:if test="${count == 0 }">
+
 <table width="700" border="1" cellpadding="0" cellspacing="0">
   <tr align="center">
     <td>게시판에 저장된 글이 없습니다.</td>
@@ -85,29 +104,71 @@
 <c:if test="${count > 0 }">
   <c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1 }"/>
   <c:set var="pageCount" value="${count / pageSize + imsi }"/>
-  <c:set var="pageBlock" value="${3 }"/>
-  <fmt:parseNumber var="result" value="${(currentPage - 1) / pageBlock }" integerOnly="true"/>
+  <c:set var="pageBlock" value="${3}"/>
+  <fmt:parseNumber var="result" value="${(currentPage - 1) / pageBlock}" integerOnly="true"/>
 
-  <c:set var="startPage" value="${result * pageBlock + 1 }"/>
-  <c:set var="endPage" value="${startPage + pageBlock - 1 }"/>
+  <c:set var="startPage" value="${result * pageBlock + 1}"/>
+  <c:set var="endPage" value="${startPage + pageBlock - 1}"/>
   
-  <c:if test="${endPage > pageCount }">
-    <c:set var="endPage" value="${pageCount }"/>
+  <c:if test="${endPage > pageCount}">
+    <c:set var="endPage" value="${pageCount}"/>
   </c:if>
   
-  <c:if test="${startPage > pageBlock }">
-    <a href="/JspProject/board/list.do?pageNum=${startPage - pageBlock }">[이전]</a>
+  <c:if test="${startPage > pageBlock}">
+    <a href="/JspProject/board/list.do?pageNum=${startPage - pageBlock}" onClick="frm_sub(${startPage - pageBlock})">[이전]</a>
   </c:if>
 
-  <c:forEach var="i" begin="${startPage }" end="${endPage }">
-    <a href="/JspProject/board/list.do?pageNum=${i }">[${i }]</a>
+  <c:forEach var="i" begin="${startPage}" end="${endPage}">
+    <a href="/JspProject/board/list.do?pageNum=${i}" onClick="frm_sub(${i})">[${i}]</a>
   </c:forEach>
 
-  <c:if test="${endPage < pageCount }">
-    <a href="/JspProject/board/list.do?pageNum=${startPage + pageBlock }">[다음]</a>
+  <c:if test="${endPage < pageCount}">
+    <a href="/JspProject/board/list.do?pageNum=${startPage + pageBlock}" onClick="frm_sub(${startPage + pageBlock})">[다음]</a>
   </c:if>
 </c:if>
+
+<br><br>
+
+<form method="post" name="i_frm">
+  <input type="hidden" name="find_box" value="${find_box}">
+  <input type="hidden" name="find" value="${find}">
+</form>
+
+<form action="/JspProject/board/list.do" method="post" name="find_frm" onsubmit="return check()">
+  <select name="find" size="1">
+    <option value="writer">작성자</option>
+    <option value="subject">제목</option>
+    <option value="content">내용</option>
+  </select>
+  &nbsp;
+  <input type="text" name="find_box">
+  &nbsp;
+  <input type="submit" value="검색">
+</form>
 
 </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

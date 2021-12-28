@@ -46,11 +46,11 @@ onsubmit="return writeSave()">
 <tr>
    <td width="70" bgcolor="${value_c}" align="center">제목</td>
    <td width="330">
-     <c:if test="${num == null}">
+     <c:if test="${num == 0}">
        <input type="text" size="50" maxlength="50" name="subject">
      </c:if>
 
-     <c:if test="${num != null}">
+     <c:if test="${num != 0}">
        <input type="text" size="50" maxlength="50" name="subject" value="[답변]">
      </c:if>
    </td>
